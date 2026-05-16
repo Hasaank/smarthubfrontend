@@ -88,7 +88,7 @@ export default function Navbar({ openModal }) {
           }}
           className="font-syne text-[18px] sm:text-[22px] font-extrabold tracking-tight text-white"
         >
-          <span className="text-[#F5A623]">Smart</span>AI Hub
+          <span className="text-[#F5A623]">Smart</span>SMB Hub
         </button>
 
         <ul className="hidden lg:flex items-center gap-6 xl:gap-8 list-none">
