@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className="border-t border-[#1A2540] bg-[#0C1220] px-4 py-10 sm:px-6 lg:px-10 xl:px-12">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-between gap-6 text-center lg:flex-row lg:text-left">
         <div className="font-syne text-[16px] font-extrabold text-white sm:text-[17px]">
-          <span className="text-[#F5A623]">Smart</span>AI Hub
+          <span className="text-[#F5A623]">Smart</span>SMB Hub
         </div>
 
         <ul className="grid w-full max-w-[520px] grid-cols-2 gap-x-4 gap-y-3 list-none sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-center sm:gap-6 lg:gap-8">
@@ -63,7 +63,7 @@ export default function Footer() {
         </ul>
 
         <div className="font-mono-custom text-[11px] text-[#64748B]">
-          (c) 2025 HasaanAI Labs - Elkton, MD
+          (c) 2025 HasaanAI Labs - Washington, DC
         </div>
       </div>
     </footer>
