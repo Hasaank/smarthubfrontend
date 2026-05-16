@@ -9,6 +9,7 @@ import CaseStudy from "@/components/CaseStudy";
 import Pricing from "@/components/Pricing";
 import CtaBanner from "@/components/CtaBanner";
 import ScrollReveal from "@/components/ScrollReveal";
+import AgencyPitch from "@/components/AgencyPitch";
 
 export default function Home() {
   const openModal = (tab) => {
@@ -34,6 +35,9 @@ export default function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <Pricing openModal={openModal} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <AgencyPitch />
       </ScrollReveal>
       <ScrollReveal>
         <CtaBanner openModal={openModal} />

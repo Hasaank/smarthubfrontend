@@ -45,6 +45,15 @@ export default function Footer() {
 
           <li>
             <a
+              href="/contact"
+              className="text-[13px] text-[#64748B] transition hover:text-[#F5A623]"
+            >
+              Contact
+            </a>
+          </li>
+
+          <li>
+            <a
               href="#"
               className="text-[13px] text-[#64748B] transition hover:text-[#F5A623]"
             >

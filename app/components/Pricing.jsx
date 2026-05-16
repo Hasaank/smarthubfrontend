@@ -2,7 +2,7 @@
 "use client";
 
 import PropTypes from "prop-types";
-import { getPlanPrice, pricingPlans } from "@/dashboard/components/pricing";
+import { pricingPlans } from "@/dashboard/components/pricing";
 
 export default function Pricing({ openModal }) {
   return (
@@ -15,9 +15,15 @@ export default function Pricing({ openModal }) {
         <br />
         <em className="text-[#F5A623] not-italic">No surprises.</em>
       </h2>
-      <p className="text-base text-[#64748B] max-w-[500px] mb-12">
-        Start with a one-time setup — we build and configure everything for you. Then pay monthly only for what you use.
+      <p className="text-base text-[#64748B] max-w-[520px] mb-4">
+        14-day free trial on every plan. No contracts. Cancel anytime. Agencies charge $1,000+ setup — we charge nothing to start.
       </p>
+
+      {/* Trial badge */}
+      <div className="inline-flex items-center gap-2 bg-[#10B981]/10 border border-[#10B981]/30 rounded-full px-4 py-1.5 mb-12">
+        <div className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+        <span className="text-xs text-[#10B981] font-medium">14-day free trial — no credit card required</span>
+      </div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {pricingPlans.map((plan) => (
@@ -28,55 +34,44 @@ export default function Pricing({ openModal }) {
   );
 }
 
-Pricing.propTypes = {
-  openModal: PropTypes.func.isRequired,
-};
+Pricing.propTypes = { openModal: PropTypes.func.isRequired };
 
 function PricingCard({ plan, openModal }) {
-  const price = getPlanPrice(plan);
   const isAgency = plan.id === "agency";
 
   return (
-    <div
-      className={`relative rounded-2xl border bg-[#0C1220] p-8 transition-all hover:-translate-y-1 hover:shadow-2xl md:p-9 ${
-        plan.featured
-          ? "border-[#F5A623] shadow-[0_0_40px_rgba(245,166,35,0.15)]"
-          : "border-[#1A2540] hover:border-[#243050]"
-      }`}
-    >
+    <div className={`relative rounded-2xl border bg-[#0C1220] p-8 transition-all hover:-translate-y-1 hover:shadow-2xl md:p-9 ${
+      plan.featured
+        ? "border-[#F5A623] shadow-[0_0_40px_rgba(245,166,35,0.15)]"
+        : "border-[#1A2540] hover:border-[#243050]"
+    }`}>
       {plan.featured && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#F5A623] px-4 py-1 font-mono-custom text-[9px] font-medium uppercase tracking-wider text-[#060911]">
           Most Popular
         </div>
       )}
 
-      <div
-        className={`mb-4 font-syne text-[15px] font-bold uppercase tracking-wider ${
-          plan.featured ? "text-[#F5A623]" : "text-[#64748B]"
-        }`}
-      >
+      <div className={`mb-3 font-syne text-[15px] font-bold uppercase tracking-wider ${plan.featured ? "text-[#F5A623]" : "text-[#64748B]"}`}>
         {plan.name}
       </div>
 
       {isAgency ? (
-        <div className="font-syne text-[42px] font-extrabold leading-none tracking-tighter text-white mb-1">
-          Custom
-        </div>
+        <>
+          <div className="font-syne text-[42px] font-extrabold leading-none tracking-tighter text-white">Custom</div>
+          <div className="mt-1 mb-6 text-[13px] text-[#64748B]">talk to us</div>
+        </>
       ) : (
-        <div className="font-syne text-[52px] font-extrabold leading-none tracking-tighter text-white">
-          <sup className="align-top text-[22px] font-semibold text-[#64748B]">$</sup>
-          {price}
-        </div>
+        <>
+          <div className="font-syne text-[52px] font-extrabold leading-none tracking-tighter text-white">
+            <sup className="align-top text-[22px] font-semibold text-[#64748B]">$</sup>
+            {plan.monthlyPrice}
+          </div>
+          <div className="mt-1 text-[13px] text-[#64748B]">per month</div>
+          <div className="mt-1 mb-6 inline-flex items-center gap-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/20 px-2.5 py-0.5">
+            <span className="text-[10px] text-[#10B981] font-medium">14-day free trial</span>
+          </div>
+        </>
       )}
-
-      <div className="mt-1 mb-2 text-[13px] text-[#64748B]">{getPlanPrice(plan) ? "per month" : "talk to us"}</div>
-
-      <div className={`mb-6 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-medium ${
-        plan.featured ? "bg-[#F5A623]/10 text-[#F5A623] border border-[#F5A623]/30" : "bg-[#10B981]/10 text-[#10B981] border border-[#10B981]/20"
-      }`}>
-        <span className="w-1 h-1 rounded-full bg-current" />
-        {plan.setupLabel}
-      </div>
 
       <div className="mb-6 h-px bg-[#1A2540]" />
 
@@ -86,7 +81,7 @@ function PricingCard({ plan, openModal }) {
           const text = isMuted ? feature.text : feature;
           return (
             <li key={idx} className="flex items-start gap-2 text-[13px]">
-              <span className={`text-sm mt-px ${isMuted ? "text-[#1E2D42]" : "text-[#10B981]"}`}>+</span>
+              <span className={`text-sm mt-px flex-shrink-0 ${isMuted ? "text-[#1E2D42]" : "text-[#10B981]"}`}>+</span>
               <span className={isMuted ? "text-[#1E2D42]" : "text-[#64748B]"}>{text}</span>
             </li>
           );
@@ -97,7 +92,7 @@ function PricingCard({ plan, openModal }) {
         onClick={() => openModal(isAgency ? "login" : "signup")}
         className={`w-full rounded-lg py-3 font-syne text-sm font-bold transition-all ${
           plan.featured
-            ? "bg-[#F5A623] text-[#060911] shadow-[0_4px_20px_rgba(245,166,35,0.3)] hover:bg-[#E09018] hover:shadow-[0_4px_30px_rgba(245,166,35,0.5)]"
+            ? "bg-[#F5A623] text-[#060911] shadow-[0_4px_20px_rgba(245,166,35,0.3)] hover:bg-[#E09018]"
             : isAgency
             ? "border border-[#10B981]/40 bg-[#10B981]/5 text-[#10B981] hover:bg-[#10B981]/10"
             : "border border-[#243050] bg-transparent text-[#E2E8F0] hover:border-[#F5A623] hover:text-[#F5A623]"
@@ -109,7 +104,4 @@ function PricingCard({ plan, openModal }) {
   );
 }
 
-PricingCard.propTypes = {
-  plan: PropTypes.object.isRequired,
-  openModal: PropTypes.func.isRequired,
-};
+PricingCard.propTypes = { plan: PropTypes.object.isRequired, openModal: PropTypes.func.isRequired };

@@ -144,6 +144,11 @@ export default function Navbar({ openModal }) {
               Pricing
             </button>
           </li>
+          <li>
+            <a href="/contact" className="text-sm text-[#64748B] hover:text-white transition">
+              Contact
+            </a>
+          </li>
         </ul>
 
         <div className="hidden sm:flex items-center gap-2 lg:gap-3">
