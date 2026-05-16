@@ -4,7 +4,7 @@ const steps = [
     number: "01",
     title: "Pick your business type",
     description:
-      "Select your industry — Smart AI Hub pre-loads tools and prompts built for your niche.",
+      "Select your industry — Smart SMB Hub pre-loads tools and prompts built for your niche.",
   },
   {
     number: "02",
