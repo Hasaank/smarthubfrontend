@@ -1,34 +1,20 @@
-export const billingCycles = {
-  monthly: {
-    id: "monthly",
-    label: "Monthly",
-    period: "per month, billed monthly",
-    discountLabel: null,
-    multiplier: 1,
-  },
-  yearly: {
-    id: "yearly",
-    label: "Yearly",
-    period: "per month, billed annually",
-    discountLabel: "Save 20%",
-    multiplier: 0.8,
-  },
-};
-
 export const pricingPlans = [
   {
     id: "starter",
     name: "Starter",
-    monthlyPrice: 49,
+    monthlyPrice: 99,
+    setupFee: 99,
     featured: false,
-    description: "For solo operators getting started with AI workflows.",
+    description: "For solo operators ready to automate their first workflows.",
     ctaLabel: "Get Started",
+    setupLabel: "One-time setup fee",
     features: [
       "AI Chat Assistant",
       "3 workflow automations",
       "50,000 AI tokens/month",
       "1 user account",
       "Email support",
+      "Onboarding call included",
       { text: "Voice receptionist", muted: true },
       { text: "Document intelligence", muted: true },
     ],
@@ -43,10 +29,12 @@ export const pricingPlans = [
   {
     id: "pro",
     name: "Pro",
-    monthlyPrice: 149,
+    monthlyPrice: 199,
+    setupFee: 199,
     featured: true,
-    description: "For growing schools that want automation, voice, and better AI control.",
-    ctaLabel: "Start Pro Free",
+    description: "For growing businesses that want full AI automation and voice.",
+    ctaLabel: "Start Pro",
+    setupLabel: "Plus one-time setup fee",
     features: [
       "Everything in Starter",
       "AI Voice Receptionist",
@@ -55,6 +43,7 @@ export const pricingPlans = [
       "200,000 AI tokens/month",
       "3 user accounts",
       "Priority support",
+      "Custom AI persona",
     ],
     capabilities: {
       claude: true,
@@ -67,10 +56,12 @@ export const pricingPlans = [
   {
     id: "agency",
     name: "Agency",
-    monthlyPrice: 399,
+    monthlyPrice: null,
+    setupFee: null,
     featured: false,
-    description: "For multi-location teams that need scale, white-labeling, and onboarding support.",
-    ctaLabel: "Contact Sales",
+    description: "For multi-location teams that need scale, white-labeling, and full support.",
+    ctaLabel: "Let's Talk",
+    setupLabel: "Custom pricing",
     features: [
       "Everything in Pro",
       "White-label branding",
@@ -79,6 +70,7 @@ export const pricingPlans = [
       "Unlimited tokens",
       "Unlimited team members",
       "Dedicated onboarding call",
+      "SLA & priority escalation",
     ],
     capabilities: {
       claude: true,
@@ -94,16 +86,11 @@ export function getPlanById(planId) {
   return pricingPlans.find((plan) => plan.id === planId) ?? pricingPlans[0];
 }
 
-export function getPlanPrice(plan, billingCycle = "monthly") {
-  const cycle = billingCycles[billingCycle] ?? billingCycles.monthly;
-  return Math.round(plan.monthlyPrice * cycle.multiplier);
+export function getPlanPrice(plan) {
+  if (!plan.monthlyPrice) return null;
+  return plan.monthlyPrice;
 }
 
-export function getPlanPeriod(billingCycle = "monthly") {
-  const cycle = billingCycles[billingCycle] ?? billingCycles.monthly;
-  return cycle.period;
-}
-
-export function getPlanYearlyTotal(plan) {
-  return getPlanPrice(plan, "yearly") * 12;
+export function getPlanPeriod() {
+  return "per month";
 }

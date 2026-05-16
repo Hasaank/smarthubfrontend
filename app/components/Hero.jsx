@@ -14,7 +14,6 @@ export default function Hero({ openModal }) {
   return (
     <div className="relative min-h-screen overflow-hidden px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-10 xl:px-12">
       <div className="absolute inset-0 bg-grid-pattern bg-[length:60px_60px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_20%,transparent_100%)] animate-grid-pulse" />
-
       <div className="absolute right-[-120px] top-[-120px] h-[280px] w-[280px] rounded-full bg-[radial-gradient(circle,rgba(245,166,35,0.12)_0%,transparent_70%)] blur-[80px] animate-orb-float sm:h-[420px] sm:w-[420px] xl:h-[500px] xl:w-[500px]" />
       <div className="absolute bottom-[-80px] left-[-100px] h-[240px] w-[240px] rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.08)_0%,transparent_70%)] blur-[80px] animate-orb-float [animation-delay:3s] sm:h-[340px] sm:w-[340px] xl:h-[400px] xl:w-[400px]" />
       <div className="absolute left-1/2 top-1/2 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.08)_0%,transparent_70%)] blur-[80px] animate-orb-float [animation-delay:6s] sm:h-[260px] sm:w-[260px] xl:h-[300px] xl:w-[300px]" />
@@ -26,7 +25,7 @@ export default function Hero({ openModal }) {
           <div className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-[#F5A623]/40 bg-[#F5A623]/10 py-1.5 pl-2 pr-3 animate-fade-up sm:mb-8 sm:pr-4 [animation-delay:0.2s]">
             <div className="h-1.5 w-1.5 rounded-full bg-[#10B981] shadow-[0_0_8px_#10B981] animate-pulse-dot" />
             <span className="font-mono-custom text-left text-[10px] tracking-[0.18em] text-[#F5A623] sm:text-[11px] sm:tracking-wider">
-              Now Live &middot; First Client Deployed in DMV
+              Multiple Clients Live &middot; DMV Area
             </span>
           </div>
 
@@ -80,7 +79,7 @@ function HeroFloatingCards() {
       <div className="absolute hidden xl:block left-[4%] top-[35%] z-10 animate-float-card [animation-delay:1s]">
         <div className="bg-[#0C1220]/90 backdrop-blur-xl border border-[#243050] rounded-xl p-4 min-w-[200px] shadow-2xl">
           <div className="font-mono-custom text-[9px] text-[#64748B] uppercase tracking-wider">
-            Live &mdash; Nest Driving School
+            Live &mdash; DMV Client
           </div>
           <div className="font-syne text-[22px] font-extrabold text-[#10B981]">
             &darr; 94%
@@ -153,10 +152,10 @@ function HeroProofStrip() {
       <div className="hidden h-10 w-px bg-[#1A2540] sm:block" />
       <div className="text-center">
         <div className="font-syne text-[22px] font-extrabold text-[#F5A623] tracking-tighter sm:text-[26px]">
-          $49
+          $99
         </div>
         <div className="text-[10px] text-[#64748B] uppercase tracking-wide sm:text-[11px]">
-          Starts At /mo
+          Starts At
         </div>
       </div>
     </div>

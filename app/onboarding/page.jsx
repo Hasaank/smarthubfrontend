@@ -150,7 +150,7 @@ const defaultCopy = {
   novaReadySubtitle: "Powered by ElevenLabs voice AI - Pre-trained on your business type",
   liveTitle: "You're live!",
   liveSubtitle:
-    "Nova is answering your calls. Automations are running. Your dashboard is live. Welcome to Smart AI Hub.",
+    "Nova is answering your calls. Automations are running. Your dashboard is live. Welcome to Smart SMB Hub.",
 };
 
 const defaultOnboardingDefaults = {

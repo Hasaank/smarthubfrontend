@@ -13,7 +13,7 @@ export default function CtaBanner({ openModal }) {
       </h2>
 
       <p className="text-base text-[#64748B] font-light mb-9 relative z-10">
-        Join local businesses across the DMV using Smart AI Hub to capture more leads, save more
+        Join local businesses across the DMV using Smart SMB Hub to capture more leads, save more
         time, and win more customers — automatically.
       </p>
 

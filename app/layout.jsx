@@ -19,7 +19,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Smart AI Hub - AI Operations for Local Businesses",
+  title: "Smart SMB Hub - AI Operations for Local Businesses",
   description:
     "One platform with AI receptionist, workflow automations, and document intelligence - pre-built for your industry. Live in under an hour.",
   icons: {
