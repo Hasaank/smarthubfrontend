@@ -107,11 +107,11 @@ function HeroFloatingCards() {
             </div>
             <div className="flex items-center gap-2 text-[11px] text-[#64748B]">
               <div className="w-1.5 h-1.5 rounded-full bg-[#22D3EE]" />
-              AI call answered &middot; 8m ago
+              AI call answered &middot; 3m ago
             </div>
             <div className="flex items-center gap-2 text-[11px] text-[#64748B]">
               <div className="w-1.5 h-1.5 rounded-full bg-[#A78BFA]" />
-              Booking confirmed &middot; 12m ago
+              Booking confirmed &middot; 4m ago
             </div>
           </div>
         </div>
