@@ -2,39 +2,37 @@ export const pricingPlans = [
   {
     id: "starter",
     name: "Starter",
-    monthlyPrice: 99,
-    setupFee: 99,
+    monthlyPrice: 97,
     featured: false,
     description: "For solo operators ready to automate their first workflows.",
-    ctaLabel: "Get Started",
-    setupLabel: "One-time setup fee",
+    ctaLabel: "Start Free Trial",
+    trialDays: 14,
     features: [
       "AI Chat Assistant",
-      "3 workflow automations",
+      "2 workflow automations",
+      "Lead capture & logging",
       "50,000 AI tokens/month",
       "1 user account",
       "Email support",
-      "Onboarding call included",
-      { text: "Voice receptionist", muted: true },
-      { text: "Document intelligence", muted: true },
+      { text: "AI Voice Receptionist", muted: true },
+      { text: "Document Intelligence", muted: true },
     ],
     capabilities: {
       claude: false,
       receptionist: false,
       documentIntelligence: false,
       teamSeats: 1,
-      automations: 3,
+      automations: 2,
     },
   },
   {
     id: "pro",
     name: "Pro",
-    monthlyPrice: 199,
-    setupFee: 199,
+    monthlyPrice: 197,
     featured: true,
-    description: "For growing businesses that want full AI automation and voice.",
-    ctaLabel: "Start Pro",
-    setupLabel: "Plus one-time setup fee",
+    description: "For growing businesses that want the full AI stack.",
+    ctaLabel: "Start Free Trial",
+    trialDays: 14,
     features: [
       "Everything in Starter",
       "AI Voice Receptionist",
@@ -42,8 +40,8 @@ export const pricingPlans = [
       "5 workflow automations",
       "200,000 AI tokens/month",
       "3 user accounts",
+      "Custom AI persona name & voice",
       "Priority support",
-      "Custom AI persona",
     ],
     capabilities: {
       claude: true,
@@ -56,12 +54,11 @@ export const pricingPlans = [
   {
     id: "agency",
     name: "Agency",
-    monthlyPrice: null,
-    setupFee: null,
+    monthlyPrice: 497,
     featured: false,
-    description: "For multi-location teams that need scale, white-labeling, and full support.",
+    description: "For multi-location teams that need scale and white-labeling.",
     ctaLabel: "Let's Talk",
-    setupLabel: "Custom pricing",
+    trialDays: 0,
     features: [
       "Everything in Pro",
       "White-label branding",
@@ -87,7 +84,6 @@ export function getPlanById(planId) {
 }
 
 export function getPlanPrice(plan) {
-  if (!plan.monthlyPrice) return null;
   return plan.monthlyPrice;
 }
 
