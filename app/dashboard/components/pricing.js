@@ -94,3 +94,25 @@ export function getPlanPrice(plan) {
 export function getPlanPeriod() {
   return "per month";
 }
+
+export function getPlanYearlyTotal(plan) {
+  if (!plan.monthlyPrice) return null;
+  return Math.round(plan.monthlyPrice * 0.8) * 12;
+}
+
+export const billingCycles = {
+  monthly: {
+    id: "monthly",
+    label: "Monthly",
+    period: "per month, billed monthly",
+    discountLabel: null,
+    multiplier: 1,
+  },
+  yearly: {
+    id: "yearly",
+    label: "Yearly",
+    period: "per month, billed annually",
+    discountLabel: "Save 20%",
+    multiplier: 0.8,
+  },
+};
