@@ -161,7 +161,7 @@ export default function AuthModal({
       ) : null}
 
       <div className="font-syne text-[18px] font-extrabold text-white mb-0.5">
-        <span className="text-[#F5A623]">Smart</span>AI Hub
+        <span className="text-[#F5A623]">Smart</span> SMB Hub
       </div>
       <div className="text-[12px] text-[#94A3B8] font-light mb-3">
         AI operations for local businesses
@@ -281,6 +281,9 @@ export default function AuthModal({
 
         <button
           type="button"
+          onClick={() => {
+            window.location.href = `${process.env.NEXT_PUBLIC_API_BASE_URL?.replace("/api", "") || "https://smarthub-backend-wf7u.onrender.com"}/api/users/auth/google`;
+          }}
           className="w-full py-2 bg-[#060911] border border-[#1A2540] text-white rounded-lg text-[14px] font-medium transition hover:border-[#243050] hover:bg-[#111927] flex items-center justify-center gap-3"
         >
           <svg
