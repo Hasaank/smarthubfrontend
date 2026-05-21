@@ -2,6 +2,7 @@
 import { DM_Sans, JetBrains_Mono, Syne } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({ children }) {
     >
       <body>
         <ClientLayout>{children}</ClientLayout>
+        <SpeedInsights />
       </body>
     </html>
   );
