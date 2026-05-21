@@ -54,7 +54,7 @@ export default function Footer() {
 
           <li>
             <a
-              href="#"
+              href="/privacy"
               className="text-[13px] text-[#64748B] transition hover:text-[#F5A623]"
             >
               Privacy
@@ -63,7 +63,7 @@ export default function Footer() {
 
           <li>
             <a
-              href="#"
+              href="/terms"
               className="text-[13px] text-[#64748B] transition hover:text-[#F5A623]"
             >
               Terms
@@ -72,7 +72,7 @@ export default function Footer() {
         </ul>
 
         <div className="font-mono-custom text-[11px] text-[#64748B]">
-          (c) 2025 HasaanAI Labs - Washington, DC
+          (c) 2026 HasaanAI Labs - Washington, DC
         </div>
       </div>
     </footer>
