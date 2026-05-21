@@ -48,7 +48,7 @@ export default function ContactPage() {
               { icon: "⚡", title: "Fast replies", desc: "We respond within a few hours — usually sooner." },
               { icon: "🤖", title: "Live demo", desc: "Ask us for a live demo of the AI receptionist on your business." },
               { icon: "📍", title: "DMV Area", desc: "Based in the Washington DC metro area — local first." },
-              { icon: "📧", title: "Email us directly", desc: "hasaank192@gmail.com", link: "mailto:hasaank192@gmail.com" },
+              { icon: "📧", title: "Email us directly", desc: "info@smartsmbhub.com", link: "mailto:hasaank192@gmail.com" },
             ].map((card, i) => (
               <div key={i} className="bg-[#0C1220] border border-[#1A2540] rounded-xl p-5 hover:border-[#243050] transition-all">
                 <div className="text-2xl mb-2">{card.icon}</div>
