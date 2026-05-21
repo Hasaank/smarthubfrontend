@@ -6,7 +6,7 @@ const features = [
     title: "AI Voice Receptionist",
     description:
       "An AI agent answers your phone calls, books appointments, and handles FAQs 24/7 — even at 2am. ElevenLabs voice synthesis. Sounds real.",
-    tag: "ElevenLabs Powered",
+    tag: "Hasaanlabs Powered",
     tagColor: "amber",
   },
   {
