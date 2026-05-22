@@ -24,8 +24,8 @@ module.exports = {
         "subtle-bg": "#1E2D42",
       },
       fontFamily: {
-        syne: ["Syne", "sans-serif"],
-        dm: ["DM Sans", "sans-serif"],
+        syne: ["Space Grotesk", "sans-serif"],
+        dm: ["Space Grotesk", "sans-serif"],
         "mono-custom": ["JetBrains Mono", "monospace"],
       },
       animation: {

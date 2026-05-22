@@ -1,16 +1,12 @@
 // app/layout.jsx
-import { DM_Sans, JetBrains_Mono, Syne } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
 
-const syne = Syne({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-syne",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
 });
 
 const jetBrainsMono = JetBrains_Mono({
@@ -31,7 +27,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmSans.variable} ${jetBrainsMono.variable}`}
+      className={`${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
     >
       <body>
         <ClientLayout>{children}</ClientLayout>
