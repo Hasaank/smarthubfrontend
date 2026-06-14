@@ -7,6 +7,7 @@ import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import CaseStudy from "@/components/CaseStudy";
 import Pricing from "@/components/Pricing";
+import ContactSection from "@/components/ContactSection";
 import CtaBanner from "@/components/CtaBanner";
 import ScrollReveal from "@/components/ScrollReveal";
 import AgencyPitch from "@/components/AgencyPitch";
@@ -38,6 +39,9 @@ export default function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <AgencyPitch />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ContactSection />
       </ScrollReveal>
       <ScrollReveal>
         <CtaBanner openModal={openModal} />
