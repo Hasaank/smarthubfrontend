@@ -98,7 +98,9 @@ function LiveDot({ color }) {
   );
 }
 
-export default function OverviewPanel() {
+export default function OverviewPanel({ businessProfile = {}, displayName = "" }) {
+  const businessLabel = businessProfile.businessName || businessProfile.businessType || displayName || "Your Business";
+
   return (
     <>
       <style>{`
@@ -130,7 +132,7 @@ export default function OverviewPanel() {
             Overview
           </div>
           <div className="mt-[2px] text-[12px] text-[var(--muted)] max-[720px]:text-[11px]">
-            Nest Driving School · Last 30 days
+            {businessLabel} · Last 30 days
           </div>
         </div>
         <div className="flex items-center gap-2 max-[1080px]:w-full max-[1080px]:flex-wrap">
@@ -244,16 +246,16 @@ export default function OverviewPanel() {
           </div>
           <div className="flex-1">
             <div className="mb-[2px] text-[14px] font-semibold text-[var(--white)]">
-              Nova is active and answering calls
+              Nova is ready — activate to answer calls 24/7
             </div>
             <div className="text-[11px] text-[var(--muted)]">
-              AI receptionist · ElevenLabs voice · 24/7 coverage
+              AI receptionist · ElevenLabs voice · Set up in Nova tab
             </div>
           </div>
           <div className="flex flex-wrap gap-4 max-[1080px]:w-full">
-            <Stat value="189" label="Calls this month" />
-            <Stat value="98%" label="Handled" />
-            <Stat value="4.9★" label="Satisfaction" />
+            <Stat value="0" label="Calls this month" />
+            <Stat value="—" label="Handled" />
+            <Stat value="—" label="Satisfaction" />
           </div>
         </div>
       </div>

@@ -47,9 +47,9 @@ const fallbackSettingsTabItems = settingsTabs.map((tab, index) => {
 });
 
 const defaultBusinessProfile = {
-  businessName: "Nest Driving School",
-  businessType: "Driving School",
-  website: "nestdrivingschool.com",
+  businessName: "",
+  businessType: "",
+  website: "",
 };
 
 const defaultSettingsToggles = {
@@ -61,32 +61,24 @@ const defaultBillingProfile = {
   autopayEnabled: true,
   emailReceipts: true,
   vatNumber: "",
-  billingEmail: "billing@smartaihub.com",
-  cardholderName: "Hasaan Ali",
+  billingEmail: "",
+  cardholderName: "",
   paymentMethod: {
-    brand: "Visa",
-    last4: "4242",
-    expiry: "08/28",
+    brand: "",
+    last4: "",
+    expiry: "",
   },
 };
 const onboardingProfileStorageKey = "dashboardOnboardingProfile";
-const defaultBusinessNamePrefix = "Nest";
 
 function getBusinessTypeLabel(name) {
-  return name || defaultBusinessProfile.businessType;
+  return name || "";
 }
 
 function getBusinessNameValue(businessName, businessType) {
   const trimmedName = typeof businessName === "string" ? businessName.trim() : "";
   const trimmedType = typeof businessType === "string" ? businessType.trim() : "";
-
-  if (!trimmedName || trimmedName === `${defaultBusinessNamePrefix} Driving School`) {
-    return trimmedType
-      ? `${defaultBusinessNamePrefix} ${trimmedType}`
-      : defaultBusinessProfile.businessName;
-  }
-
-  return trimmedName;
+  return trimmedName || trimmedType || "";
 }
 
 function buildBusinessProfileFromOnboarding(onboardingData, fallbackProfile = defaultBusinessProfile) {
@@ -265,6 +257,11 @@ export default function DashboardPage() {
           setLoggedInUser((current) => ({
             ...(current ?? {}),
             username: data.profile.displayName,
+          }));
+          setBillingProfile((current) => ({
+            ...current,
+            cardholderName: current.cardholderName || data.profile.displayName,
+            billingEmail: current.billingEmail || data.profile.email || "",
           }));
         }
       } catch {
@@ -475,7 +472,7 @@ export default function DashboardPage() {
 
         <div className="flex min-w-0 flex-1 flex-col overflow-y-auto">
           <div className={activePanel === "overview" ? "block" : "hidden"}>
-            <OverviewPanel />
+            <OverviewPanel businessProfile={businessProfile} displayName={displayName} />
           </div>
           <div className={activePanel === "chat" ? "block" : "hidden"}>
             <ChatPanel avatarLabel={avatarLabel} />
