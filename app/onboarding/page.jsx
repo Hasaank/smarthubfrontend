@@ -1,7 +1,39 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useRef, useState } from "react";
+import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+
+/* ── Confetti burst ──────────────────────────────────────────── */
+function Confetti() {
+  const pieces = Array.from({ length: 55 }, (_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    color: ["#f5a623","#22d3ee","#a78bfa","#10b981","#ec4899","#fff"][i % 6],
+    size: Math.random() * 8 + 3,
+    delay: Math.random() * 1.6,
+    dur: Math.random() * 2 + 2,
+    dx: (Math.random() - 0.5) * 130,
+    round: i % 3 === 0,
+  }));
+  return (
+    <div style={{ position:"fixed", inset:0, pointerEvents:"none", zIndex:9999, overflow:"hidden" }}>
+      {pieces.map((p) => (
+        <div
+          key={p.id}
+          style={{
+            position:"absolute", top:"-20px", left:`${p.left}%`,
+            width:p.size, height:p.round ? p.size : p.size * 0.4,
+            background:p.color,
+            borderRadius: p.round ? "50%" : "2px",
+            "--p-dx": `${p.dx}px`,
+            animation:`confettiFall ${p.dur}s ${p.delay}s ease-in both`,
+            opacity:0,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
 
 import {
   getMyOnboarding,
@@ -255,6 +287,8 @@ export default function OnboardingPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [shouldOpenFullFlow, setShouldOpenFullFlow] = useState(false);
+  const [animDir, setAnimDir] = useState("right");
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const skipNextAutosaveRef = useRef(true);
   const autosaveTimeoutRef = useRef(null);
@@ -519,7 +553,12 @@ export default function OnboardingPage() {
       }
     }
 
+    setAnimDir(nextStep > currentStep ? "right" : "left");
     setCurrentStep(nextStep);
+    if (nextStep === 5) {
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 4000);
+    }
     return true;
   };
 
@@ -611,11 +650,14 @@ export default function OnboardingPage() {
     );
   }
 
+  const slideClass = animDir === "right" ? "animate-slide-in-right" : "animate-slide-in-left";
+
   return (
     <main
       className="min-h-screen bg-[linear-gradient(180deg,#060911_0%,#0a1120_100%)] text-[var(--flow-text)] [background-image:radial-gradient(circle_at_top_right,rgba(245,166,35,0.1),transparent_28%),linear-gradient(180deg,#060911_0%,#0a1120_100%)]"
       style={themeVars}
     >
+      {showConfetti && <Confetti />}
       <div className="mx-auto w-[min(1280px,calc(100%-32px))] px-0 pb-14 pt-[clamp(48px,6vw,72px)] min-[1440px]:w-[min(1360px,calc(100%-64px))] max-[1080px]:w-[min(100%-32px,1000px)] max-[1080px]:pt-[56px] max-[720px]:w-[min(100%-20px,100%)] max-[720px]:pb-7 max-[720px]:pt-12">
         <div className="mb-5 flex items-center justify-end gap-4 max-[720px]:flex-col max-[720px]:items-start">
         </div>
@@ -643,11 +685,11 @@ export default function OnboardingPage() {
                 >
                   <div
                     className={cn(
-                      "flex h-7 w-7 items-center justify-center rounded-full font-['JetBrains_Mono',monospace] text-[11px] max-[720px]:h-6 max-[720px]:w-6 max-[720px]:text-[10px]",
+                      "flex h-7 w-7 items-center justify-center rounded-full font-['JetBrains_Mono',monospace] text-[11px] max-[720px]:h-6 max-[720px]:w-6 max-[720px]:text-[10px] transition-all duration-300",
                       isDone
                         ? "bg-[var(--flow-green)] text-[#060911]"
                         : isActive
-                          ? "bg-[var(--flow-amber)] text-[#060911]"
+                          ? "bg-[var(--flow-amber)] text-[#060911] animate-step-pulse"
                           : "bg-[var(--flow-subtle)] text-[var(--flow-muted)]",
                     )}
                   >
@@ -661,7 +703,7 @@ export default function OnboardingPage() {
         </div>
 
         {currentStep === 2 && (
-          <section className="rounded-[16px] border border-[var(--flow-border-2)] bg-[var(--flow-bg-2)] p-10 max-[720px]:p-5">
+          <section key="step-2" className={`rounded-[16px] border border-[var(--flow-border-2)] bg-[var(--flow-bg-2)] p-10 max-[720px]:p-5 ${slideClass}`}>
             <h1 className="mb-[6px] font-['Syne',sans-serif] text-[26px] font-extrabold tracking-[-0.8px] text-[var(--flow-white)]">
               {copy.businessTitle}
             </h1>
@@ -729,7 +771,7 @@ export default function OnboardingPage() {
         )}
 
         {currentStep === 3 && (
-          <section className="rounded-[16px] border border-[var(--flow-border-2)] bg-[var(--flow-bg-2)] p-10 max-[720px]:p-5">
+          <section key="step-3" className={`rounded-[16px] border border-[var(--flow-border-2)] bg-[var(--flow-bg-2)] p-10 max-[720px]:p-5 ${slideClass}`}>
             <h1 className="mb-[6px] font-['Syne',sans-serif] text-[26px] font-extrabold tracking-[-0.8px] text-[var(--flow-white)]">
               {copy.integrationsTitle}
             </h1>
@@ -791,7 +833,7 @@ export default function OnboardingPage() {
         )}
 
         {currentStep === 4 && (
-          <section className="rounded-[16px] border border-[var(--flow-border-2)] bg-[var(--flow-bg-2)] p-10 max-[720px]:p-5">
+          <section key="step-4" className={`rounded-[16px] border border-[var(--flow-border-2)] bg-[var(--flow-bg-2)] p-10 max-[720px]:p-5 ${slideClass}`}>
             <h1 className="mb-[6px] font-['Syne',sans-serif] text-[26px] font-extrabold tracking-[-0.8px] text-[var(--flow-white)]">
               {copy.novaTitle}
             </h1>
@@ -885,7 +927,7 @@ export default function OnboardingPage() {
         )}
 
         {currentStep === 5 && (
-          <section className="rounded-[16px] border border-[var(--flow-border-2)] bg-[var(--flow-bg-2)] px-10 py-[60px] text-center max-[720px]:px-5 max-[720px]:py-9">
+          <section key="step-5" className={`rounded-[16px] border border-[var(--flow-border-2)] bg-[var(--flow-bg-2)] px-10 py-[60px] text-center max-[720px]:px-5 max-[720px]:py-9 ${slideClass}`}>
             <div className="mb-5 text-[56px]">🚀</div>
             <h1 className="mb-[6px] text-center font-['Syne',sans-serif] text-[26px] font-extrabold tracking-[-0.8px] text-[var(--flow-white)]">
               {copy.liveTitle}
