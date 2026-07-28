@@ -91,7 +91,7 @@ const sections = [
       "Opt-out: Unsubscribe from marketing emails at any time",
       "Complaint: Lodge a complaint with your local data protection authority",
     ],
-    footer: "To exercise any of these rights, email us at hasaank192@gmail.com.",
+    footer: "To exercise any of these rights, email us at info@smartsmbhub.com.",
   },
   {
     title: "8. Children's Privacy",
@@ -111,7 +111,7 @@ const sections = [
     contact: {
       company: "Hasaan Labs LLC",
       location: "Washington, DC Metro Area",
-      email: "hasaank192@gmail.com",
+      email: "info@smartsmbhub.com",
       website: "https://smartsmbhub.com",
     },
   },

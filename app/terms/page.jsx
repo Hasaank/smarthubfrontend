@@ -56,7 +56,7 @@ const sections = [
       },
       {
         sub: "Refunds",
-        text: "We offer a 7-day money-back guarantee on your first paid month if the Service does not meet your needs. After 7 days, all payments are non-refundable. Contact hasaank192@gmail.com to request a refund.",
+        text: "We offer a 7-day money-back guarantee on your first paid month if the Service does not meet your needs. After 7 days, all payments are non-refundable. Contact info@smartsmbhub.com to request a refund.",
       },
       {
         sub: "Payment Processor",
@@ -147,7 +147,7 @@ const sections = [
     contact: {
       company: "Hasaan Labs LLC",
       location: "Washington, DC Metro Area",
-      email: "hasaank192@gmail.com",
+      email: "info@smartsmbhub.com",
       website: "https://smartsmbhub.com",
     },
   },
